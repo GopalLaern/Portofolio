@@ -1,5 +1,5 @@
 /**
- * Fakhri Nauval - Portfolio Logic
+ * Fakhri Nauval - Architecture System & Layout Logic
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +21,7 @@ function initDynamicYear() {
 }
 
 /**
- * Handle mobile menu activation and animations
+ * Handle mobile navigation and SVG hamburger transitions
  */
 function initMobileMenu() {
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
@@ -46,7 +46,6 @@ function initMobileMenu() {
     });
   }
 
-  // Automatically close the menu when a nav link is clicked
   mobileLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
@@ -62,24 +61,24 @@ function initMobileMenu() {
 }
 
 /**
- * Handle sticky header styling adjustment on scroll
+ * Dynamic background adjustment on scroll
  */
 function initHeaderAccent() {
   const header = document.getElementById("main-header");
 
   if (header) {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        header.classList.add("py-1", "border-neutral-200");
+      if (window.scrollY > 40) {
+        header.classList.add("py-1", "shadow-sm", "border-gallery-clay");
       } else {
-        header.classList.remove("py-1", "border-neutral-200");
+        header.classList.remove("py-1", "shadow-sm", "border-gallery-clay");
       }
     });
   }
 }
 
 /**
- * Setup Intersection Observer for smooth content reveal on scroll
+ * Setup Intersection Observer for clean scrolling transitions
  */
 function initScrollReveal() {
   const revealElements = document.querySelectorAll(".reveal");
@@ -87,14 +86,14 @@ function initScrollReveal() {
   const observerOptions = {
     root: null,
     threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
+    rootMargin: "0px 0px -40px 0px",
   };
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
-        observer.unobserve(entry.target); // Trigger animation once
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
@@ -105,7 +104,7 @@ function initScrollReveal() {
 }
 
 /**
- * Mock interaction handler for the contact form
+ * Simulated action of the contact submission
  */
 function initContactForm() {
   const contactForm = document.getElementById("contact-form");
@@ -115,14 +114,14 @@ function initContactForm() {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      formFeedback.textContent = "Processing details...";
+      formFeedback.textContent = "TRANSMITTING DATA...";
       formFeedback.classList.remove("hidden");
 
       setTimeout(() => {
         formFeedback.textContent =
-          "Thank you. Your message has been simulated as successfully sent.";
+          "TRANSMISSION SUCCESSFUL. LOGGED SIMULATION RESUME.";
         contactForm.reset();
-      }, 1000);
+      }, 1200);
     });
   }
 }
